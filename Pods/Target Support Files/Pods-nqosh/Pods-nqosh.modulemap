@@ -1,0 +1,6 @@
+framework module Pods_nqosh {
+  umbrella header "Pods-nqosh-umbrella.h"
+
+  export *
+  module * { export * }
+}
