@@ -8,7 +8,7 @@
 
 import UIKit
 import GooglePlaces
-
+import GooglePlacePicker
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
