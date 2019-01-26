@@ -40,6 +40,40 @@ class Api: NSObject {
         
     }
     
+    ///////services
+    class func services(completion:@escaping(_ error :Error? ,_ data:[ServicesModel]?)->Void){
+        let BaseUrl = config.services
+        Alamofire.request(BaseUrl)
+            .validate(statusCode:200..<300)
+            .responseJSON { response in
+                switch response.result
+                {
+                case .failure( let error):
+                    print(error)
+                    completion(error , nil)
+                case .success(let value):
+                    print(value)
+                    let json = JSON(value)
+                    // print(json)
+                    let datobj = json
+                    
+                    guard let dataArr = datobj["data"].array else{
+                        completion(nil , nil)
+                        return
+                    }
+                    var results = [ServicesModel]()
+                    for data in dataArr {
+                        if let data = data.dictionary ,let info = ServicesModel.init(dic: data) {
+                            results.append(info)
+                        }
+                    }
+                    completion(nil,results)
+                }
+                
+        }
+        
+    }
+    
  
     
     

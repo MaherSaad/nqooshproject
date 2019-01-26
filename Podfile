@@ -10,4 +10,8 @@ pod 'Kingfisher', '~> 4.0'
 pod 'Alamofire'
 pod 'SwiftyJSON'
 #pod 'UITableViewCellAnimation'
+
+ pod 'GooglePlacePicker'
+  pod 'GooglePlaces'
+
 end

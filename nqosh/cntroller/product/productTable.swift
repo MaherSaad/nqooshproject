@@ -32,6 +32,9 @@ class productTable: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productdata.count
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "detailProductSegue", sender: indexPath.row)
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = pTable.dequeueReusableCell(withIdentifier: "productCell" ,for: indexPath) as! productTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -42,9 +45,16 @@ class productTable: UITableViewController {
         cell.productimage.kf.setImage(with: url)
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // print(productdata[indexPath.row].id as Any)
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let pos:Int = sender as! Int
+        if segue.identifier == "detailProductSegue"{
+            let destination = segue.destination as! ProductDetail
+            destination.productdata = self.productdata[pos]
+        }
     }
+    
 
 
     

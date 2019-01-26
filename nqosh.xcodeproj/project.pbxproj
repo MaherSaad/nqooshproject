@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045E451721FC80C700483138 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451621FC80C700483138 /* ProductDetail.swift */; };
+		045E451921FC919B00483138 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451821FC919B00483138 /* ServicesModel.swift */; };
 		2783FEC5FC50FA5069F60423 /* Pods_nqosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */; };
 		540E793A21E926B20018F642 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E792F21E926B10018F642 /* Bool+Extension.swift */; };
 		540E793B21E926B20018F642 /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E793021E926B20018F642 /* JSON+Extension.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		045E451621FC80C700483138 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
+		045E451821FC919B00483138 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nqosh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540E792F21E926B10018F642 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		540E793021E926B20018F642 /* JSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Extension.swift"; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			children = (
 				5464F5C121E9FD7300B3A9A3 /* productTable.swift */,
 				5464F5C321E9FDA600B3A9A3 /* productTableViewCell.swift */,
+				045E451621FC80C700483138 /* ProductDetail.swift */,
 			);
 			path = product;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			children = (
 				5419151C21E94647005C7925 /* catModel.swift */,
 				541CD6E221EBA18800605D2E /* productModel.swift */,
+				045E451821FC919B00483138 /* ServicesModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 				54CBD91221E379600066C0B5 /* Frameworks */,
 				54CBD91321E379600066C0B5 /* Resources */,
 				75DCEF6177F1F3B280AC2A15 /* [CP] Embed Pods Frameworks */,
+				A6D5BA662ECA3AA598D5A335 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +258,7 @@
 				TargetAttributes = {
 					54CBD91421E379600066C0B5 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -312,6 +320,32 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A6D5BA662ECA3AA598D5A335 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB25E2B0AF81A71AD97C71B7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045E451921FC919B00483138 /* ServicesModel.swift in Sources */,
 				5419152021E94A2F005C7925 /* Api.swift in Sources */,
 				540E793A21E926B20018F642 /* Bool+Extension.swift in Sources */,
 				5419151A21E9282D005C7925 /* Helper.swift in Sources */,
@@ -361,6 +396,7 @@
 				540E793F21E926B20018F642 /* actionCheet+extention.swift in Sources */,
 				5464F5C421E9FDA600B3A9A3 /* productTableViewCell.swift in Sources */,
 				54CBD91921E379600066C0B5 /* AppDelegate.swift in Sources */,
+				045E451721FC80C700483138 /* ProductDetail.swift in Sources */,
 				540E794421E926B20018F642 /* TextFiled+extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +544,7 @@
 			baseConfigurationReference = 7965ADD41CC78D6B13B5B7A4 /* Pods-nqosh.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZYXWKAWWZ4;
 				INFOPLIST_FILE = "$(SRCROOT)/nqosh/f/Info.plist";
@@ -517,6 +554,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.creativeshare.com.nqosh.nqosh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -527,6 +565,7 @@
 			baseConfigurationReference = 593C10C54BFBB603AB87252A /* Pods-nqosh.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZYXWKAWWZ4;
 				INFOPLIST_FILE = "$(SRCROOT)/nqosh/f/Info.plist";
