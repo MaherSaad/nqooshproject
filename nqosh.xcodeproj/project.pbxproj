@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0419BCE221FDB2A400EB6236 /* ConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419BCE121FDB2A400EB6236 /* ConfirmVC.swift */; };
 		045E451721FC80C700483138 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451621FC80C700483138 /* ProductDetail.swift */; };
 		045E451921FC919B00483138 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451821FC919B00483138 /* ServicesModel.swift */; };
+		049136ED21FDC2F700DC94B8 /* ServicesOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */; };
 		2783FEC5FC50FA5069F60423 /* Pods_nqosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */; };
 		540E793A21E926B20018F642 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E792F21E926B10018F642 /* Bool+Extension.swift */; };
 		540E793B21E926B20018F642 /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E793021E926B20018F642 /* JSON+Extension.swift */; };
@@ -37,8 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0419BCE121FDB2A400EB6236 /* ConfirmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmVC.swift; sourceTree = "<group>"; };
 		045E451621FC80C700483138 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		045E451821FC919B00483138 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
+		049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesOrderVC.swift; sourceTree = "<group>"; };
 		30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nqosh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540E792F21E926B10018F642 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		540E793021E926B20018F642 /* JSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Extension.swift"; sourceTree = "<group>"; };
@@ -82,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		049136EB21FDC2D300DC94B8 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		540E792E21E926680018F642 /* extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +144,7 @@
 				5464F5C121E9FD7300B3A9A3 /* productTable.swift */,
 				5464F5C321E9FDA600B3A9A3 /* productTableViewCell.swift */,
 				045E451621FC80C700483138 /* ProductDetail.swift */,
+				0419BCE121FDB2A400EB6236 /* ConfirmVC.swift */,
 			);
 			path = product;
 			sourceTree = "<group>";
@@ -190,6 +203,7 @@
 		54CBD92C21E37CF10066C0B5 /* cntroller */ = {
 			isa = PBXGroup;
 			children = (
+				049136EB21FDC2D300DC94B8 /* services */,
 				5464F5C021E9FD1B00B3A9A3 /* product */,
 				5419152121E94C43005C7925 /* cat */,
 				54CBD91821E379600066C0B5 /* AppDelegate.swift */,
@@ -384,12 +398,14 @@
 				540E794221E926B20018F642 /* String+Extension.swift in Sources */,
 				5419151B21E9282D005C7925 /* config.swift in Sources */,
 				541CD6E321EBA18800605D2E /* productModel.swift in Sources */,
+				0419BCE221FDB2A400EB6236 /* ConfirmVC.swift in Sources */,
 				540E794021E926B20018F642 /* CheckInternet.swift in Sources */,
 				540E794121E926B20018F642 /* Extentions.swift in Sources */,
 				540E793B21E926B20018F642 /* JSON+Extension.swift in Sources */,
 				540E793C21E926B20018F642 /* SSBadgeButton.swift in Sources */,
 				5419152321E94C78005C7925 /* catCell.swift in Sources */,
 				540E793D21E926B20018F642 /* badgetExtentions.swift in Sources */,
+				049136ED21FDC2F700DC94B8 /* ServicesOrderVC.swift in Sources */,
 				540E794321E926B20018F642 /* Style.swift in Sources */,
 				540E793E21E926B20018F642 /* GradientView.swift in Sources */,
 				54CBD91B21E379600066C0B5 /* HomeVC.swift in Sources */,

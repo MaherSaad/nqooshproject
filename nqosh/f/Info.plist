@@ -46,9 +46,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>نحتاج إلي صلاحية الموقع الخاص بك للتوصيل طلبك</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>نحتاج إلي صلاحية الموقع الخاص بك لتوصيل طلبك</string>
 </dict>
 </plist>
