@@ -87,7 +87,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isServices{
-            
+            self.performSegue(withIdentifier: "orderServiceSegue", sender: indexPath.row)
         }else{
             let catid = dataArr[indexPath.row].id
             if catid == 6{
@@ -108,6 +108,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         }else if id == "serviceSegue" {
             let destinationVC = segue.destination as! HomeVC
             destinationVC.isServices = true
+        }else if id == "orderServiceSegue"{
+            let pos = sender as! Int
+            let des = segue.destination as! ServicesOrderVC
+            des.serviceId = self.servicesArr[pos].id
+            des.serviceName = self.servicesArr[pos].name!
         }
     }
 }

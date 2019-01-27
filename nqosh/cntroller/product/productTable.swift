@@ -1,6 +1,8 @@
 
 import UIKit
-class productTable: UITableViewController {
+class productTable: UITableViewController,AddProtocol {
+    
+    
     
     @IBOutlet weak var buttonCart: UIButton!
     @IBOutlet weak var lableNoOfCartItem: UILabel?    
@@ -36,7 +38,11 @@ class productTable: UITableViewController {
         self.performSegue(withIdentifier: "detailProductSegue", sender: indexPath.row)
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let pos = indexPath.row
+        
         let cell = pTable.dequeueReusableCell(withIdentifier: "productCell" ,for: indexPath) as! productTableViewCell
+        cell.addProtocol = self
+        cell.addButt.tag = pos
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.productName.text = productdata[indexPath.row].name
         cell.productPrice.text = "ريال" + productdata[indexPath.row].price!
@@ -58,7 +64,9 @@ class productTable: UITableViewController {
 
 
     
-    
+    func didPressButton(_ tag: Int, _ sender: UIButton) {
+        sender.isHidden = true
+    }
     
     
     

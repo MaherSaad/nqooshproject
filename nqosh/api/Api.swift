@@ -52,7 +52,6 @@ class Api: NSObject {
                     print(error)
                     completion(error , nil)
                 case .success(let value):
-                    print(value)
                     let json = JSON(value)
                     // print(json)
                     let datobj = json
@@ -68,6 +67,39 @@ class Api: NSObject {
                         }
                     }
                     completion(nil,results)
+                }
+                
+        }
+        
+    }
+    //////order services
+    class func orderService(client_phone:String,client_name:String,details:String,service_id:Int, completion:@escaping(_ error :Error? ,_ msg:String)->Void){
+        let BaseUrl = config.serviceorders
+        
+       
+
+        let parameters:Parameters = ["client_phone":client_phone,"client_name":client_name,"details":details,"service_id":service_id]
+       
+        Alamofire.request(BaseUrl, method: .post, parameters: parameters)
+            .validate(statusCode:200..<300)
+            .responseJSON { response in
+                
+                switch response.result
+                {
+                case .failure( let error):
+                    print(error)
+                    completion(error , "")
+                case .success(let value):
+                    print(value)
+                    let json = JSON(value)
+                    if let msg = json["message"].string{
+                        
+                        completion(nil, msg)
+
+                    }else{
+                        completion(nil,"")
+                    }
+                    // print(json)
                 }
                 
         }

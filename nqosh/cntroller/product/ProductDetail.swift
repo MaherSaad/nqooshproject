@@ -34,8 +34,7 @@ class ProductDetail: UIViewController {
             let url = URL(string: productdata?.image! ?? "")
             productImg.kf.setImage(with: url)
             avalible = Int(productdata?.quantity ?? "0")!
-            productCount.text = "\(avalible) العدد المتوفر : "
-            
+            productCount.text = "العدد المتوفر : \(avalible) "
             totalIndicator.text = "\(total) ريال"
             
         }else{

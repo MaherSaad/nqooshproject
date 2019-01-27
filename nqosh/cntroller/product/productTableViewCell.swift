@@ -14,6 +14,10 @@ class productTableViewCell: UITableViewCell {
     @IBOutlet weak var productimage: UIImageView!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
+    
+    @IBOutlet weak var addButt: UIButton!
+    weak var addProtocol:AddProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +28,8 @@ class productTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func addToChart(_ sender: UIButton) {
+        addProtocol?.didPressButton(sender.tag, sender)
+    }
 }
 

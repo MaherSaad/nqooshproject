@@ -8,6 +8,6 @@ struct config {
    // static let orders = main + "api/orders/"
     static let contacts = main + "api/contacts/"
     static let services = main + "api/services"
-    static let serviceorders = main + "api/service-orders/"
+    static let serviceorders = main + "api/service-orders"
 
 }
