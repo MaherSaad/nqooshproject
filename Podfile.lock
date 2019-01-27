@@ -15,7 +15,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - GoogleMaps
   - GooglePlacePicker
+  - GooglePlaces
   - Kingfisher (~> 4.0)
   - SwiftyJSON
 
@@ -36,6 +38,6 @@ SPEC CHECKSUMS:
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 17b16670d317e83ca93717f25d4bd642bc623978
+PODFILE CHECKSUM: 8fa9a8e6d52e01954df61e5355d345980a7701b3
 
 COCOAPODS: 1.5.3

@@ -13,5 +13,6 @@ pod 'SwiftyJSON'
 
  pod 'GooglePlacePicker'
   pod 'GooglePlaces'
+  pod 'GoogleMaps'
 
 end
