@@ -12,6 +12,10 @@
 		045E451921FC919B00483138 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451821FC919B00483138 /* ServicesModel.swift */; };
 		049136ED21FDC2F700DC94B8 /* ServicesOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */; };
 		049136F021FDDCD700DC94B8 /* AddProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136EF21FDDCD700DC94B8 /* AddProtocol.swift */; };
+		049136F221FDE67C00DC94B8 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136F121FDE67C00DC94B8 /* OrdersVC.swift */; };
+		049136F521FDE69300DC94B8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 049136F321FDE69300DC94B8 /* Model.xcdatamodeld */; };
+		049136F721FDEB1800DC94B8 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136F621FDEB1800DC94B8 /* OrderCell.swift */; };
+		049136F921FDED6C00DC94B8 /* OrdersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136F821FDED6C00DC94B8 /* OrdersProtocol.swift */; };
 		2783FEC5FC50FA5069F60423 /* Pods_nqosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */; };
 		540E793A21E926B20018F642 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E792F21E926B10018F642 /* Bool+Extension.swift */; };
 		540E793B21E926B20018F642 /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E793021E926B20018F642 /* JSON+Extension.swift */; };
@@ -45,6 +49,10 @@
 		045E451821FC919B00483138 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesOrderVC.swift; sourceTree = "<group>"; };
 		049136EF21FDDCD700DC94B8 /* AddProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProtocol.swift; sourceTree = "<group>"; };
+		049136F121FDE67C00DC94B8 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		049136F421FDE69300DC94B8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		049136F621FDEB1800DC94B8 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		049136F821FDED6C00DC94B8 /* OrdersProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersProtocol.swift; sourceTree = "<group>"; };
 		30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nqosh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540E792F21E926B10018F642 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		540E793021E926B20018F642 /* JSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Extension.swift"; sourceTree = "<group>"; };
@@ -100,6 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				0419BCE121FDB2A400EB6236 /* ConfirmVC.swift */,
+				049136F121FDE67C00DC94B8 /* OrdersVC.swift */,
+				049136F621FDEB1800DC94B8 /* OrderCell.swift */,
+				049136F821FDED6C00DC94B8 /* OrdersProtocol.swift */,
 			);
 			path = orders;
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 				5419151C21E94647005C7925 /* catModel.swift */,
 				541CD6E221EBA18800605D2E /* productModel.swift */,
 				045E451821FC919B00483138 /* ServicesModel.swift */,
+				049136F321FDE69300DC94B8 /* Model.xcdatamodeld */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -403,8 +415,10 @@
 				045E451921FC919B00483138 /* ServicesModel.swift in Sources */,
 				5419152021E94A2F005C7925 /* Api.swift in Sources */,
 				540E793A21E926B20018F642 /* Bool+Extension.swift in Sources */,
+				049136F521FDE69300DC94B8 /* Model.xcdatamodeld in Sources */,
 				049136F021FDDCD700DC94B8 /* AddProtocol.swift in Sources */,
 				5419151A21E9282D005C7925 /* Helper.swift in Sources */,
+				049136F721FDEB1800DC94B8 /* OrderCell.swift in Sources */,
 				5419151D21E94647005C7925 /* catModel.swift in Sources */,
 				5464F5C221E9FD7300B3A9A3 /* productTable.swift in Sources */,
 				540E794221E926B20018F642 /* String+Extension.swift in Sources */,
@@ -419,6 +433,8 @@
 				540E793D21E926B20018F642 /* badgetExtentions.swift in Sources */,
 				049136ED21FDC2F700DC94B8 /* ServicesOrderVC.swift in Sources */,
 				540E794321E926B20018F642 /* Style.swift in Sources */,
+				049136F221FDE67C00DC94B8 /* OrdersVC.swift in Sources */,
+				049136F921FDED6C00DC94B8 /* OrdersProtocol.swift in Sources */,
 				540E793E21E926B20018F642 /* GradientView.swift in Sources */,
 				54CBD91B21E379600066C0B5 /* HomeVC.swift in Sources */,
 				540E793F21E926B20018F642 /* actionCheet+extention.swift in Sources */,
@@ -630,6 +646,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		049136F321FDE69300DC94B8 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				049136F421FDE69300DC94B8 /* Model.xcdatamodel */,
+			);
+			currentVersion = 049136F421FDE69300DC94B8 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 54CBD90D21E379600066C0B5 /* Project object */;
 }

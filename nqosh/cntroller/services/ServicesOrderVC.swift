@@ -20,7 +20,8 @@ class ServicesOrderVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"back.jpg")!)
+
         details.text = serviceName!
     }
     
