@@ -35,14 +35,15 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         //2
         let fetchRequest =
             NSFetchRequest<Order>(entityName: "Order")
         //3
         do {
             data = try context?.fetch(fetchRequest) as? [Order]
+            if data!.isEmpty {
+                confirmButt.isHidden = true
+            }
             self.tableView.reloadData()
             calculateTotal()
         } catch let error as NSError {

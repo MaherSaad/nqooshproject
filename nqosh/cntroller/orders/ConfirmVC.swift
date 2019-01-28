@@ -37,9 +37,6 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
         super.viewDidLoad()
         placesClient = GMSPlacesClient.shared()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"back.jpg")!)
-
-    }
-    override func viewWillAppear(_ animated: Bool) {
         locationManager.requestAlwaysAuthorization()
         placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
             if let error = error {
@@ -54,6 +51,7 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
             
         })
     }
+    
     
     
     @IBAction func locationEdit(_ sender: Any) {
@@ -71,7 +69,7 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
         if name.isEmpty || phone.isEmpty || address.isEmpty{
             self.showAlert(message: "جميع الحقول مطلوبة")
         }else{
-            Api.order(client_phone: phone, client_name: name, products: self.products!, total: self.total!, longitude: self.lng, latitude: self.lat) { (error:Error?, msg:String) in
+            Api.order(client_phone: phone, client_name: name, products: self.products!, total: self.total!, longitude: self.lng, latitude: self.lat,plus: address) { (error:Error?, msg:String) in
                 var message = msg
                 if message.isEmpty {
                     message = "خطأ في طلب الخدمة"
@@ -80,18 +78,14 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
                
                 if message == "Success"{
                     guard let appDelegate =
-                        UIApplication.shared.delegate as? AppDelegate else {
-                            return
-                    }
+                        UIApplication.shared.delegate as? AppDelegate else {return}
                     let context =
                         appDelegate.persistentContainer.viewContext
-                    //2
                     let fetchRequest =
                         NSFetchRequest<NSFetchRequestResult>(entityName: "Order")
-                    
                     let request = NSBatchDeleteRequest(fetchRequest: fetchRequest)
                     do {
-                        let result = try context.execute(request)
+                        try context.execute(request)
                         self.navigationController?.popViewController(animated: true)
                     }catch {
                         print("Failed to delete all")
