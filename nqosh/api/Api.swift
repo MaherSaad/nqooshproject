@@ -76,10 +76,10 @@ class Api: NSObject {
     class func orderService(client_phone:String,client_name:String,details:String,service_id:Int, completion:@escaping(_ error :Error? ,_ msg:String)->Void){
         let BaseUrl = config.serviceorders
         
-       
-
+        
+        
         let parameters:Parameters = ["client_phone":client_phone,"client_name":client_name,"details":details,"service_id":service_id]
-       
+        
         Alamofire.request(BaseUrl, method: .post, parameters: parameters)
             .validate(statusCode:200..<300)
             .responseJSON { response in
@@ -95,15 +95,43 @@ class Api: NSObject {
                     if let msg = json["message"].string{
                         
                         completion(nil, msg)
-
+                        
                     }else{
                         completion(nil,"")
                     }
                     // print(json)
                 }
-                
         }
+    }
+    
+    //////order products
+    class func order(client_phone:String,client_name:String,products:[[Int]],total:Double,longitude:Double, latitude:Double,completion:@escaping(_ error :Error? ,_ msg:String)->Void){
+        let BaseUrl = config.orders
         
+        let parameters:Parameters = ["client_phone":client_phone,"client_name":client_name,"delivery_price":0,"delivery":0,"products[]":products,"total":total,"longitude":longitude,"latitude":latitude,"status":0]
+        print(parameters)
+
+        Alamofire.request(BaseUrl, method: .post, parameters: parameters)
+            .validate(statusCode:200..<300)
+            .responseJSON { response in
+                
+                switch response.result
+                {
+                case .failure( let error):
+                    print(error)
+                    completion(error , "")
+                case .success(let value):
+                    print(value)
+                    let json = JSON(value)
+                    if let msg = json["message"].string{
+                        completion(nil, msg)
+    
+                    }else{
+                        completion(nil,"")
+                    }
+                    // print(json)
+                }
+        }
     }
     
  

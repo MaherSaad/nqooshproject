@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 class productTable: UITableViewController,AddProtocol {
     
     
@@ -11,8 +12,17 @@ class productTable: UITableViewController,AddProtocol {
     @IBOutlet var pTable: UITableView!
     var catproduct:catModel?
     var productdata = [productModel]()
+    
+    var context:NSManagedObjectContext?
+    var entity:NSEntityDescription?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "Order", in: context!)
+        
         pTable.tableFooterView = UIView()
         self.title = catproduct?.name
         setdata()
@@ -66,6 +76,23 @@ class productTable: UITableViewController,AddProtocol {
     
     func didPressButton(_ tag: Int, _ sender: UIButton) {
         sender.isHidden = true
+        let newOrder = NSManagedObject(entity: entity!, insertInto: context)
+        let data:productModel = self.productdata[tag]
+        
+        newOrder.setValue(data.id, forKey: "id")
+        newOrder.setValue(data.name, forKey: "name")
+        newOrder.setValue(data.image, forKey: "image")
+        newOrder.setValue(data.price, forKey: "price")
+        newOrder.setValue(1, forKey: "quantity")
+
+        do {
+            
+            try context?.save()
+            print("success")
+        } catch {
+            
+            print("Failed saving")
+        }
     }
     
     

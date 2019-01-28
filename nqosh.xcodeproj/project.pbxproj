@@ -225,8 +225,8 @@
 		54CBD92C21E37CF10066C0B5 /* cntroller */ = {
 			isa = PBXGroup;
 			children = (
-				049136EE21FDDCBC00DC94B8 /* orders */,
 				049136EB21FDC2D300DC94B8 /* services */,
+				049136EE21FDDCBC00DC94B8 /* orders */,
 				5464F5C021E9FD1B00B3A9A3 /* product */,
 				5419152121E94C43005C7925 /* cat */,
 				54CBD91821E379600066C0B5 /* AppDelegate.swift */,

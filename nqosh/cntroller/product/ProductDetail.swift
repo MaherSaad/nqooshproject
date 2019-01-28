@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ProductDetail: UIViewController {
 
@@ -23,9 +24,15 @@ class ProductDetail: UIViewController {
     var count : Int = 1
     var avalible : Int = 0
     var price : Double = 0.0
+    
+    var context:NSManagedObjectContext?
+    var entity:NSEntityDescription?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.persistentContainer.viewContext
+        entity = NSEntityDescription.entity(forEntityName: "Order", in: context!)
+        
         if productdata != nil{
             productName.text = productdata?.name
             productDesc.text = productdata?.detailes
@@ -55,7 +62,7 @@ class ProductDetail: UIViewController {
     
     
     @IBAction func remove(_ sender: Any) {
-        if count >= 1 {
+        if count > 1 {
             count -= 1
             total = Double(count) * price
             totalIndicator.text = "\(total) ريال"
@@ -64,5 +71,23 @@ class ProductDetail: UIViewController {
     }
     
     @IBAction func addToBasket(_ sender: Any) {
+        
+        let newOrder = NSManagedObject(entity: entity!, insertInto: context)
+        
+        newOrder.setValue(productdata!.id, forKey: "id")
+        newOrder.setValue(productdata!.name, forKey: "name")
+        newOrder.setValue(productdata!.image, forKey: "image")
+        newOrder.setValue(count, forKey: "quantity")
+        newOrder.setValue(productdata!.price, forKey: "price")
+
+        do {
+            
+            try context?.save()
+            navigationController?.popViewController(animated: true)
+
+        } catch {
+            
+            print("Failed saving")
+        }
     }
 }

@@ -10,15 +10,22 @@ import UIKit
 import MapKit
 import GooglePlaces
 import GooglePlacePicker
+import CoreData
 var placesClient: GMSPlacesClient!
 
 
 class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePickerViewControllerDelegate {
     
+    @IBOutlet weak var clientName: UITextField!
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var clientNum: UITextField!
     @IBOutlet weak var clientAddress: UITextField!
     let locationManager = CLLocationManager()
+    var lng:Double = 0.0
+    var lat:Double = 0.0
+    
+    var total:Double?
+    var products:[[Int]]?
     
     let imageView : UIImageView = {
         let iv = UIImageView()
@@ -41,12 +48,13 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
             }
             
             if let location = placeLikelihoodList?.likelihoods.last?.place{
-                self.clientAddress.text = location.formattedAddress ?? ""
+                
                 self.updateLocationOnMap(place: location)
             }
             
         })
     }
+    
     
     @IBAction func locationEdit(_ sender: Any) {
         let config = GMSPlacePickerConfig(viewport: nil)
@@ -56,6 +64,46 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
     }
     
     @IBAction func sendOrder(_ sender: Any) {
+        let name = self.clientName.text!
+        let phone = self.clientNum.text!
+        let address = self.clientAddress.text!
+    
+        if name.isEmpty || phone.isEmpty || address.isEmpty{
+            self.showAlert(message: "جميع الحقول مطلوبة")
+        }else{
+            Api.order(client_phone: phone, client_name: name, products: self.products!, total: self.total!, longitude: self.lng, latitude: self.lat) { (error:Error?, msg:String) in
+                var message = msg
+                if message.isEmpty {
+                    message = "خطأ في طلب الخدمة"
+                }
+                self.showAlert(message: message)
+               
+                if message == "Success"{
+                    guard let appDelegate =
+                        UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                    }
+                    let context =
+                        appDelegate.persistentContainer.viewContext
+                    //2
+                    let fetchRequest =
+                        NSFetchRequest<NSFetchRequestResult>(entityName: "Order")
+                    
+                    let request = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                    do {
+                        let result = try context.execute(request)
+                        self.navigationController?.popViewController(animated: true)
+                    }catch {
+                        print("Failed to delete all")
+                    }
+
+                }
+                
+                }
+            
+
+        }
+        
     }
     
     
@@ -73,7 +121,10 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
     }
     
     func updateLocationOnMap(place:GMSPlace){
-        let center = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+        lat = place.coordinate.latitude
+        lng = place.coordinate.longitude
+        self.clientAddress.text = place.formattedAddress ?? ""
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.map.setRegion(region, animated: true)
         let annotation = MKPointAnnotation()
