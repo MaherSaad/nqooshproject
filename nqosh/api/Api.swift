@@ -105,11 +105,13 @@ class Api: NSObject {
     }
     
     //////order products
-    class func order(client_phone:String,client_name:String,products:[[Int]],total:Double,longitude:Double, latitude:Double,plus:String,completion:@escaping(_ error :Error? ,_ msg:String)->Void){
+    class func order(client_phone:String,client_name:String,products:String,total:Double,longitude:Double, latitude:Double,plus:String,completion:@escaping(_ error :Error? ,_ msg:String)->Void){
         let BaseUrl = config.orders
         
-        let parameters:Parameters = ["client_phone":client_phone,"client_name":client_name,"delivery_price":0,"delivery":0,"products[]":products,"total":total,"longitude":longitude,"latitude":latitude,"status":0,"plus":plus]
+        let parameters:Parameters = ["client_phone":client_phone,"client_name":client_name,"delivery_price":0,"delivery":0,"products":products,"total":total,"longitude":longitude,"latitude":latitude,"status":0,"plus":plus]
 
+
+        
         Alamofire.request(BaseUrl, method: .post, parameters: parameters)
             .validate(statusCode:200..<300)
             .responseJSON { response in

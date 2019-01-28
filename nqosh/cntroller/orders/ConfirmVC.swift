@@ -69,7 +69,7 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
         if name.isEmpty || phone.isEmpty || address.isEmpty{
             self.showAlert(message: "جميع الحقول مطلوبة")
         }else{
-            Api.order(client_phone: phone, client_name: name, products: self.products!, total: self.total!, longitude: self.lng, latitude: self.lat,plus: address) { (error:Error?, msg:String) in
+            Api.order(client_phone: phone, client_name: name, products: "\(self.products!)", total: self.total!, longitude: self.lng, latitude: self.lat,plus: address) { (error:Error?, msg:String) in
                 var message = msg
                 if message.isEmpty {
                     message = "خطأ في طلب الخدمة"
@@ -86,7 +86,6 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
                     let request = NSBatchDeleteRequest(fetchRequest: fetchRequest)
                     do {
                         try context.execute(request)
-                        self.navigationController?.popViewController(animated: true)
                     }catch {
                         print("Failed to delete all")
                     }
