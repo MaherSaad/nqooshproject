@@ -7,6 +7,8 @@ target 'nqosh' do
 
   # Pods for nqosh
 pod 'Kingfisher', '~> 4.0'
+pod 'IQKeyboardManagerSwift'
+
 pod 'Alamofire'
 pod 'SwiftyJSON'
 #pod 'UITableViewCellAnimation'

@@ -27,12 +27,7 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
     var total:Double?
     var products:[[Int]]?
     
-    let imageView : UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named:"back")
-        iv.contentMode = .scaleAspectFill
-        return iv
-    }()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         placesClient = GMSPlacesClient.shared()

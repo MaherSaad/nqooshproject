@@ -134,7 +134,38 @@ class Api: NSObject {
         }
     }
     
- 
+    //////distributor login
+    class func login(client_phone:String,client_pass:String,completion:@escaping(_ error :Error? ,_ success:Bool)->Void){
+        let BaseUrl = config.orders
+        
+        let parameters:Parameters = ["client_phone":client_phone,"client_pass":client_pass]
+        
+        
+        
+        Alamofire.request(BaseUrl, method: .post, parameters: parameters)
+            .validate(statusCode:200..<300)
+            .responseJSON { response in
+                
+                switch response.result
+                {
+                case .failure( let error):
+                    completion(error , false)
+                case .success(let value):
+                    let json = JSON(value)
+                    if let msg = json["message"].string{
+                        if msg == "Success"{
+                            completion(nil, true)
+                        }else{
+                            completion(nil, false)
+                        }
+                        
+                    }else{
+                        completion(nil,false)
+                    }
+                    // print(json)
+                }
+        }
+    }
     
     
     
