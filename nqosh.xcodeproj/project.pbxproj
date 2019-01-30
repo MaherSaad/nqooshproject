@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0419BCE221FDB2A400EB6236 /* ConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419BCE121FDB2A400EB6236 /* ConfirmVC.swift */; };
+		0433C9B22201D3AE004BC135 /* OrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433C9B12201D3AE004BC135 /* OrdersModel.swift */; };
 		045E451721FC80C700483138 /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451621FC80C700483138 /* ProductDetail.swift */; };
 		045E451921FC919B00483138 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045E451821FC919B00483138 /* ServicesModel.swift */; };
 		049136ED21FDC2F700DC94B8 /* ServicesOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		0419BCE121FDB2A400EB6236 /* ConfirmVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmVC.swift; sourceTree = "<group>"; };
+		0433C9B12201D3AE004BC135 /* OrdersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersModel.swift; sourceTree = "<group>"; };
 		045E451621FC80C700483138 /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		045E451821FC919B00483138 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		049136EC21FDC2F700DC94B8 /* ServicesOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesOrderVC.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				541CD6E221EBA18800605D2E /* productModel.swift */,
 				045E451821FC919B00483138 /* ServicesModel.swift */,
 				049136F321FDE69300DC94B8 /* Model.xcdatamodeld */,
+				0433C9B12201D3AE004BC135 /* OrdersModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				54CBD91B21E379600066C0B5 /* HomeVC.swift in Sources */,
 				540E793F21E926B20018F642 /* actionCheet+extention.swift in Sources */,
 				5464F5C421E9FDA600B3A9A3 /* productTableViewCell.swift in Sources */,
+				0433C9B22201D3AE004BC135 /* OrdersModel.swift in Sources */,
 				54CBD91921E379600066C0B5 /* AppDelegate.swift in Sources */,
 				045E451721FC80C700483138 /* ProductDetail.swift in Sources */,
 				540E794421E926B20018F642 /* TextFiled+extention.swift in Sources */,

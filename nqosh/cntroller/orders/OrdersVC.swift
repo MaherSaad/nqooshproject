@@ -19,7 +19,8 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
     @IBOutlet weak var tableView: UITableView!
     var data:[Order]?
     var total:Double = 0.0
-    var orderDetails =  [[Int]]()
+    //var orderDetails =  [[Int]]()
+    var orderDetails:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -110,11 +111,23 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
     
     func calculateTotal(){
         total = 0.0
-        orderDetails.removeAll()
+        //orderDetails.removeAll()
+        
+        let prodArray:NSMutableArray = NSMutableArray()
+
         for order in self.data!{
-            orderDetails.append([Int(order.id),Int(order.quantity)])
+           // orderDetails.append([Int(order.id),Int(order.quantity)])
             total = total + (Double(order.quantity) * (order.price?.toDouble() ?? 0.0))
+            
+            let prod: NSMutableDictionary = NSMutableDictionary()
+            prod.setValue(order.id, forKey: "id")
+            prod.setValue(order.quantity, forKey: "quantity")
+            prodArray.add(prod)
         }
+
+        
+        let jsonData: Data? = try? JSONSerialization.data(withJSONObject: prodArray)
+        orderDetails = String(data: jsonData!, encoding: .utf8);
         
         self.totalLabel.text = "\(total) ريال"
     }
@@ -129,7 +142,7 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
         if segue.identifier == "confirmSegue"{
             let destination = segue.destination as! ConfirmVC
             destination.total = self.total
-            destination.products = self.orderDetails
+            destination.products = self.orderDetails!
         }
     }
     

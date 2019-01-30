@@ -10,7 +10,7 @@ import UIKit
 
 class DistributorLoginVC: UIViewController {
 
-    //distributionOrderDetail
+    //
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     let defaults = UserDefaults.standard
@@ -35,7 +35,7 @@ class DistributorLoginVC: UIViewController {
         if phone.isEmpty || pass.isEmpty{
             self.showAlert(message: "جميع الحقول مطلوبة")
         }else{
-            Api.login(client_phone: phone, client_pass: pass) { (error:Error?, success:Bool) in
+            Api.login(phone: phone, pass: pass) { (error:Error?, success:Bool) in
                 if success{
                     self.defaults.set(true, forKey: "isLogin")
                     self.performSegue(withIdentifier: "destribtuionsOrdersSegue", sender: nil)

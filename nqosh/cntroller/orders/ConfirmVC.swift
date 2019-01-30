@@ -25,8 +25,8 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
     var lat:Double = 0.0
     
     var total:Double?
-    var products:[[Int]]?
-    
+   // var products:[[Int]]?
+    var products:String = ""
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
         if name.isEmpty || phone.isEmpty || address.isEmpty{
             self.showAlert(message: "جميع الحقول مطلوبة")
         }else{
-            Api.order(client_phone: phone, client_name: name, products: "\(self.products!)", total: self.total!, longitude: self.lng, latitude: self.lat,plus: address) { (error:Error?, msg:String) in
+            Api.order(client_phone: phone, client_name: name, products: self.products, total: self.total!, longitude: self.lng, latitude: self.lat,plus: address) { (error:Error?, msg:String) in
                 var message = msg
                 if message.isEmpty {
                     message = "خطأ في طلب الخدمة"

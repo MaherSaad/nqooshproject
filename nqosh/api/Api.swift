@@ -110,7 +110,7 @@ class Api: NSObject {
         
         let parameters:Parameters = ["client_phone":client_phone,"client_name":client_name,"delivery_price":0,"delivery":0,"products":products,"total":total,"longitude":longitude,"latitude":latitude,"status":0,"plus":plus]
 
-
+            print(parameters)
         
         Alamofire.request(BaseUrl, method: .post, parameters: parameters)
             .validate(statusCode:200..<300)
@@ -135,11 +135,11 @@ class Api: NSObject {
     }
     
     //////distributor login
-    class func login(client_phone:String,client_pass:String,completion:@escaping(_ error :Error? ,_ success:Bool)->Void){
-        let BaseUrl = config.orders
+    class func login(phone:String,pass:String,completion:@escaping(_ error :Error? ,_ success:Bool)->Void){
+        let BaseUrl = config.login
         
-        let parameters:Parameters = ["client_phone":client_phone,"client_pass":client_pass]
-        
+        //,"username":username
+        let parameters:Parameters = ["phone":phone,"password":pass]
         
         
         Alamofire.request(BaseUrl, method: .post, parameters: parameters)
@@ -170,8 +170,61 @@ class Api: NSObject {
     
     
     
+    ///////getOrders
+    class func getOrders(completion:@escaping(_ error :Error? ,_ data:[OrdersModel]?)->Void){
+        let BaseUrl = config.orders
+        Alamofire.request(BaseUrl)
+            .validate(statusCode:200..<300)
+            .responseJSON { response in
+                switch response.result
+                {
+                case .failure( let error):
+                    print(error)
+                    completion(error , nil)
+                case .success(let value):
+                    let json = JSON(value)
+                    // print(json)
+                    let datobj = json
+                    
+                    guard let dataArr = datobj["data"].array else{
+                        completion(nil , nil)
+                        return
+                    }
+                    var results = [OrdersModel]()
+                    for data in dataArr {
+                        
+                        if let data = data.dictionary ,let info = OrdersModel.init(dic: data) {
+                            results.append(info)
+                        }
+                    }
+                    completion(nil,results)
+                }
+                
+        }
+        
+    }
     
     
+    //////finish order
+    class func finishOrder(id:Int,completion:@escaping(_ error :Error? ,_ msg:String)->Void){
+        let BaseUrl = config.updateStatus + "\(id)"
+        
+        let parameters:Parameters = ["status":1]
+        
+        Alamofire.request(BaseUrl, method: .post, parameters: parameters)
+            .validate(statusCode:200..<300)
+            .responseJSON { response in
+                
+                switch response.result
+                {
+                case .failure( let error):
+                    print(error)
+                    completion(error , "خطأ في الاتصال")
+                case .success(let value):
+                    completion(nil, "تم توصيل الاوردر")
+                }
+        }
+    }
     
     
 }

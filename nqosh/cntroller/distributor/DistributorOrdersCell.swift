@@ -9,7 +9,12 @@
 import UIKit
 
 class DistributorOrdersCell: UITableViewCell {
-
+    @IBOutlet weak var clientName: UILabel!
+    @IBOutlet weak var clientPhone: UILabel!
+    
+    @IBOutlet weak var clientAddress: UILabel!
+    
+    @IBOutlet weak var total: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
