@@ -148,24 +148,16 @@ class Api: NSObject {
                 
                 switch response.result
                 {
-                case .failure( let error):
+                    case .failure( let error):
                     completion(error , false)
-                case .success(let value):
-                    let json = JSON(value)
-                    if let msg = json["message"].string{
-                        if msg == "Success"{
-                            completion(nil, true)
-                        }else{
-                            completion(nil, false)
-                        }
+                    case .success(let value):
+                    completion(nil, true)
                         
-                    }else{
-                        completion(nil,false)
-                    }
+                }
                     // print(json)
                 }
         }
-    }
+    
     
     
     
