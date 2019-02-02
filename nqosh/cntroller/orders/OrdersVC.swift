@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,OrdersProtocol {
     
@@ -19,6 +20,8 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
     @IBOutlet weak var tableView: UITableView!
     var data:[Order]?
     var total:Double = 0.0
+    let locationManager = CLLocationManager()
+
     //var orderDetails =  [[Int]]()
     var orderDetails:String?
     override func viewDidLoad() {
@@ -36,6 +39,9 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        locationManager.requestWhenInUseAuthorization()
+
         //2
         let fetchRequest =
             NSFetchRequest<Order>(entityName: "Order")
@@ -44,6 +50,7 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
             data = try context?.fetch(fetchRequest) as? [Order]
             if data!.isEmpty {
                 confirmButt.isHidden = true
+                totalLabel.isHidden = true
             }
             self.tableView.reloadData()
             calculateTotal()

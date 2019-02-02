@@ -22,7 +22,7 @@ class productTable: UITableViewController,AddProtocol {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "Order", in: context!)
-        
+    
         pTable.tableFooterView = UIView()
         self.title = catproduct?.name
         setdata()

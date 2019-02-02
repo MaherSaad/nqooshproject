@@ -20,7 +20,6 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var clientNum: UITextField!
     @IBOutlet weak var clientAddress: UITextField!
-    let locationManager = CLLocationManager()
     var lng:Double = 0.0
     var lat:Double = 0.0
     
@@ -32,7 +31,6 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
         super.viewDidLoad()
         placesClient = GMSPlacesClient.shared()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"back.jpg")!)
-        locationManager.requestAlwaysAuthorization()
         placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
             if let error = error {
                 print("Pick Place error: \(error.localizedDescription)")
@@ -67,11 +65,10 @@ class ConfirmVC: UIViewController, UINavigationControllerDelegate,GMSPlacePicker
             Api.order(client_phone: phone, client_name: name, products: self.products, total: self.total!, longitude: self.lng, latitude: self.lat,plus: address) { (error:Error?, msg:String) in
                 var message = msg
                 if message.isEmpty {
-                    message = "خطأ في طلب الخدمة"
-                }
-                self.showAlert(message: message)
-               
-                if message == "Success"{
+                    self.showAlert(message: "خطأ في طلب الخدمة")
+                }else if message == "Success"{
+                    self.showAlert(message: "تم طلب الاوردر بنجاح")
+
                     guard let appDelegate =
                         UIApplication.shared.delegate as? AppDelegate else {return}
                     let context =
