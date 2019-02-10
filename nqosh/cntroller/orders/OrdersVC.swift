@@ -74,7 +74,7 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
 
         cell.ordersProtocol = self
         if let order = self.data?[pos] {
-            cell.productName.text = order.name
+            cell.productName.text = "\(order.name) - \(order.color)"
             cell.productPrice.text = "ريال" + order.price!
             cell.quantityLabel.text = "\(order.quantity)"
             let url = URL(string: order.image!)
@@ -129,6 +129,7 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
             let prod: NSMutableDictionary = NSMutableDictionary()
             prod.setValue(order.id, forKey: "id")
             prod.setValue(order.quantity, forKey: "quantity")
+            prod.setValue(order.color, forKey: "color")
             prodArray.add(prod)
         }
 

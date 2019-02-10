@@ -21,5 +21,6 @@ extension Order {
     @NSManaged public var name: String?
     @NSManaged public var quantity: Int32
     @NSManaged public var price: String?
+    @NSManaged public var color: String?
 
 }

@@ -1,10 +1,11 @@
 
 import UIKit
 import CoreData
-class productTable: UITableViewController,AddProtocol {
+class productTable: UITableViewController,AddProtocol, UISearchBarDelegate {
     
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var buttonCart: UIButton!
     @IBOutlet weak var lableNoOfCartItem: UILabel?    
     var counterItem = 0
@@ -12,7 +13,7 @@ class productTable: UITableViewController,AddProtocol {
     @IBOutlet var pTable: UITableView!
     var catproduct:catModel?
     var productdata = [productModel]()
-    
+    var filterData  = [productModel]()
     var context:NSManagedObjectContext?
     var entity:NSEntityDescription?
     
@@ -36,13 +37,14 @@ class productTable: UITableViewController,AddProtocol {
                 productdata.append(info)
             }
         }
+        filterData = productdata
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productdata.count
+        return filterData.count
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "detailProductSegue", sender: indexPath.row)
@@ -54,14 +56,35 @@ class productTable: UITableViewController,AddProtocol {
         cell.addProtocol = self
         cell.addButt.tag = pos
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.productName.text = productdata[indexPath.row].name
-        cell.productPrice.text = "ريال" + productdata[indexPath.row].price!
-        cell.detailes.text = productdata[indexPath.row].detailes
-        let url = URL(string: productdata[indexPath.row].image!)
+        cell.productName.text = filterData[indexPath.row].name
+        cell.productPrice.text = "ريال" + filterData[indexPath.row].price!
+        cell.detailes.text = filterData[indexPath.row].detailes
+        let url = URL(string: filterData[indexPath.row].image!)
         cell.productimage.kf.setImage(with: url)
         return cell
     }
     
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+       
+        
+        filterData = searchText.isEmpty ? productdata : productdata.filter({ (productModel:productModel) -> Bool in
+            return productModel.name?.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let pos:Int = sender as! Int

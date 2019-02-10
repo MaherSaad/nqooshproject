@@ -12,6 +12,7 @@ PODS:
     - GoogleMaps/Base (= 2.7.0)
   - IQKeyboardManagerSwift (6.2.0)
   - Kingfisher (4.10.1)
+  - SelectionList (1.3.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - GooglePlaces
   - IQKeyboardManagerSwift
   - Kingfisher (~> 4.0)
+  - SelectionList
   - SwiftyJSON
 
 SPEC REPOS:
@@ -31,6 +33,7 @@ SPEC REPOS:
     - GooglePlaces
     - IQKeyboardManagerSwift
     - Kingfisher
+    - SelectionList
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -40,8 +43,9 @@ SPEC CHECKSUMS:
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SelectionList: 4f4c720baf48f3d19c28d0622a43cbef237bb984
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 58edef4e482834dbc1e247f4243a5683666b397c
+PODFILE CHECKSUM: fc4dd874ad3f1f054b53c9c37855a513e4587d6d
 
 COCOAPODS: 1.5.3

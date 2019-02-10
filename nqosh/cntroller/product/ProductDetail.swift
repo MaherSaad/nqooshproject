@@ -8,13 +8,16 @@
 
 import UIKit
 import CoreData
+import SelectionList
 
 class ProductDetail: UIViewController {
 
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDesc: UILabel!
-    @IBOutlet weak var productCount: UILabel!
+    
+    @IBOutlet weak var selectionList: SelectionList!
+    
     @IBOutlet weak var totalIndicator: UILabel!
     @IBOutlet weak var countIndicator: UILabel!
     
@@ -24,6 +27,7 @@ class ProductDetail: UIViewController {
     var count : Int = 1
     var avalible : Int = 0
     var price : Double = 0.0
+    var colors = [String]()
     
     var context:NSManagedObjectContext?
     var entity:NSEntityDescription?
@@ -41,9 +45,18 @@ class ProductDetail: UIViewController {
             let url = URL(string: productdata?.image! ?? "")
             productImg.kf.setImage(with: url)
             avalible = Int(productdata?.quantity ?? "0")!
-            productCount.text = "العدد المتوفر : \(avalible) "
+            //productCount.text = "العدد المتوفر : \(avalible) "
             totalIndicator.text = "\(total) ريال"
             
+
+            selectionList.items = []
+            selectionList.allowsMultipleSelection = false
+            selectionList.selectedIndex = 0
+
+            selectionList.addTarget(self, action: #selector(selectionChanged), for: .valueChanged)
+            selectionList.setupCell = { (cell: UITableViewCell, _: Int) in
+                cell.textLabel?.textColor = .gray
+            }
         }else{
             navigationController?.popViewController(animated: true)
         }
@@ -78,6 +91,7 @@ class ProductDetail: UIViewController {
         newOrder.setValue(productdata!.name, forKey: "name")
         newOrder.setValue(productdata!.image, forKey: "image")
         newOrder.setValue(count, forKey: "quantity")
+        newOrder.setValue(colors[selectionList.selectedIndex ?? 0], forKey: "color")
         newOrder.setValue(productdata!.price, forKey: "price")
 
         do {
@@ -89,5 +103,10 @@ class ProductDetail: UIViewController {
             
             print("Failed saving")
         }
+    }
+    
+    
+    @objc func selectionChanged() {
+       
     }
 }
