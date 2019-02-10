@@ -11,11 +11,10 @@ pod 'IQKeyboardManagerSwift'
 
 pod 'Alamofire'
 pod 'SwiftyJSON'
-#pod 'UITableViewCellAnimation'
+
 
  pod 'GooglePlacePicker'
   pod 'GooglePlaces'
   pod 'GoogleMaps'
-pod 'SelectionList'
 
 end

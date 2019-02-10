@@ -9,20 +9,21 @@
 import UIKit
 import CoreData
 import SelectionList
+import SwiftyJSON
 
-class ProductDetail: UIViewController {
+class ProductDetail: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
 
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDesc: UILabel!
+    @IBOutlet weak var colorCollection: UICollectionView!
     
-    @IBOutlet weak var selectionList: SelectionList!
     
     @IBOutlet weak var totalIndicator: UILabel!
     @IBOutlet weak var countIndicator: UILabel!
     
     var productdata : productModel?
-    
+    var selectedColor = 0
     var total :Double = 0.0
     var count : Int = 1
     var avalible : Int = 0
@@ -38,6 +39,9 @@ class ProductDetail: UIViewController {
         entity = NSEntityDescription.entity(forEntityName: "Order", in: context!)
         
         if productdata != nil{
+            for color in productdata!.colors {
+                colors.append(color.string!)
+            }
             productName.text = productdata?.name
             productDesc.text = productdata?.detailes
             total = productdata!.price?.toDouble() ?? 0.0
@@ -48,15 +52,9 @@ class ProductDetail: UIViewController {
             //productCount.text = "العدد المتوفر : \(avalible) "
             totalIndicator.text = "\(total) ريال"
             
-
-            selectionList.items = []
-            selectionList.allowsMultipleSelection = false
-            selectionList.selectedIndex = 0
-
-            selectionList.addTarget(self, action: #selector(selectionChanged), for: .valueChanged)
-            selectionList.setupCell = { (cell: UITableViewCell, _: Int) in
-                cell.textLabel?.textColor = .gray
-            }
+            colorCollection.delegate = self
+            colorCollection.dataSource = self
+        
         }else{
             navigationController?.popViewController(animated: true)
         }
@@ -91,7 +89,7 @@ class ProductDetail: UIViewController {
         newOrder.setValue(productdata!.name, forKey: "name")
         newOrder.setValue(productdata!.image, forKey: "image")
         newOrder.setValue(count, forKey: "quantity")
-        newOrder.setValue(colors[selectionList.selectedIndex ?? 0], forKey: "color")
+        newOrder.setValue(colors[selectedColor] ?? "", forKey: "color")
         newOrder.setValue(productdata!.price, forKey: "price")
 
         do {
@@ -105,8 +103,44 @@ class ProductDetail: UIViewController {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedColor = indexPath.row
+    }
     
-    @objc func selectionChanged() {
-       
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCellID", for: indexPath)
+        
+        cell.backgroundColor = hexStringToUIColor(hex: colors[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return colors.count
+    }
+    
+    
+    func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+        
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+        
+        var rgbValue:UInt32 = 0
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+        
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }

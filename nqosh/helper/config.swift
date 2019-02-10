@@ -1,5 +1,5 @@
 struct config {
-    static let main = "http://noqoush.creativeshare.co/"
+    static let main = "http://nqoosh.net/"
     static let imagePath = main + "storage/"
     static let category = main + "api/categories/"
     static let orders = main + "api/orders"

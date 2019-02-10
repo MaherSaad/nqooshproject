@@ -23,12 +23,13 @@ class productTable: UITableViewController,AddProtocol, UISearchBarDelegate {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "Order", in: context!)
-    
+        searchBar.delegate = self
         pTable.tableFooterView = UIView()
         self.title = catproduct?.name
         setdata()
         pTable.reloadData()
     }
+    
     func setdata()  {
     let product = catproduct?.products
         for data in product! {
@@ -68,9 +69,8 @@ class productTable: UITableViewController,AddProtocol, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        
-        
         filterData = searchText.isEmpty ? productdata : productdata.filter({ (productModel:productModel) -> Bool in
-            return productModel.name?.range(of: searchText, options: .caseInsensitive) != nil
+            return productModel.name!.range(of: searchText, options: .caseInsensitive) != nil
         })
         
         tableView.reloadData()
@@ -84,6 +84,11 @@ class productTable: UITableViewController,AddProtocol, UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +112,7 @@ class productTable: UITableViewController,AddProtocol, UISearchBarDelegate {
         newOrder.setValue(data.image, forKey: "image")
         newOrder.setValue(data.price, forKey: "price")
         newOrder.setValue(1, forKey: "quantity")
+        newOrder.setValue(data.colors[0].string ?? "", forKey: "color")
 
         do {
             

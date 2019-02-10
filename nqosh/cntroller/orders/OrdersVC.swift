@@ -74,7 +74,7 @@ class OrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Order
 
         cell.ordersProtocol = self
         if let order = self.data?[pos] {
-            cell.productName.text = "\(order.name) - \(order.color)"
+            cell.productName.text = (order.name)
             cell.productPrice.text = "ريال" + order.price!
             cell.quantityLabel.text = "\(order.quantity)"
             let url = URL(string: order.image!)

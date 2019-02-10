@@ -22,6 +22,7 @@
 		0493754922006CB400945864 /* DistributorOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493754822006CB400945864 /* DistributorOrdersVC.swift */; };
 		0493754B22006CD800945864 /* DistributorDetailOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493754A22006CD800945864 /* DistributorDetailOrdersVC.swift */; };
 		0493754D22006CEA00945864 /* DistributorLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0493754C22006CEA00945864 /* DistributorLoginVC.swift */; };
+		04E106172210B39300362B08 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E106162210B39300362B08 /* ColorCell.swift */; };
 		2783FEC5FC50FA5069F60423 /* Pods_nqosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */; };
 		540E793A21E926B20018F642 /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E792F21E926B10018F642 /* Bool+Extension.swift */; };
 		540E793B21E926B20018F642 /* JSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540E793021E926B20018F642 /* JSON+Extension.swift */; };
@@ -65,6 +66,7 @@
 		0493754822006CB400945864 /* DistributorOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributorOrdersVC.swift; sourceTree = "<group>"; };
 		0493754A22006CD800945864 /* DistributorDetailOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributorDetailOrdersVC.swift; sourceTree = "<group>"; };
 		0493754C22006CEA00945864 /* DistributorLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributorLoginVC.swift; sourceTree = "<group>"; };
+		04E106162210B39300362B08 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		30D29CFE2FA0443080EDEBFF /* Pods_nqosh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nqosh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540E792F21E926B10018F642 /* Bool+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		540E793021E926B20018F642 /* JSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Extension.swift"; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				5464F5C121E9FD7300B3A9A3 /* productTable.swift */,
 				5464F5C321E9FDA600B3A9A3 /* productTableViewCell.swift */,
 				045E451621FC80C700483138 /* ProductDetail.swift */,
+				04E106162210B39300362B08 /* ColorCell.swift */,
 			);
 			path = product;
 			sourceTree = "<group>";
@@ -365,11 +368,10 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-nqosh/Pods-nqosh-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/SelectionList/SelectionList.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -379,12 +381,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SelectionList.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nqosh/Pods-nqosh-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A6D5BA662ECA3AA598D5A335 /* [CP] Copy Pods Resources */ = {
@@ -395,7 +396,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-nqosh/Pods-nqosh-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
@@ -410,7 +411,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nqosh/Pods-nqosh-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nqosh/Pods-nqosh-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AB25E2B0AF81A71AD97C71B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -464,6 +465,7 @@
 				540E793C21E926B20018F642 /* SSBadgeButton.swift in Sources */,
 				0493754922006CB400945864 /* DistributorOrdersVC.swift in Sources */,
 				5419152321E94C78005C7925 /* catCell.swift in Sources */,
+				04E106172210B39300362B08 /* ColorCell.swift in Sources */,
 				540E793D21E926B20018F642 /* badgetExtentions.swift in Sources */,
 				049136ED21FDC2F700DC94B8 /* ServicesOrderVC.swift in Sources */,
 				540E794321E926B20018F642 /* Style.swift in Sources */,
